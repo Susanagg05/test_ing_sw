@@ -2,9 +2,6 @@ import 'package:flutter/material.dart';
 import 'menu.dart';
 import 'diagnostico.dart';
 
-import 'package:flutter/material.dart';
-import 'menu.dart';
-
 class SeleccionMedicoRoute extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -38,11 +35,6 @@ class SeleccionMedicoRoute extends StatelessWidget {
   }
 }
 
-// Resto del código
-
-
-// La clase BackgroundWidget es la misma que en menu.dart
-// Puedes mover esta clase a un archivo separado y luego importarlo en ambos archivos para reutilizarlo
 class BackgroundWidget extends StatelessWidget {
   final String title;
   final String menuButtonText1;
