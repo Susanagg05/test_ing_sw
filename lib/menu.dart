@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'seleccion_medico.dart';
 import 'diagnostico.dart';
+import 'autenticacion.dart';
 import 'package:flutter/services.dart';
 
 class MenuWidget extends StatelessWidget {
@@ -15,7 +16,7 @@ class MenuWidget extends StatelessWidget {
           Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (context) => SeleccionMedicoRoute(),
+              builder: (context) => AutenticacionRoute(),
             ),
           );
         },
