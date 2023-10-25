@@ -11,12 +11,10 @@ class SeleccionMedicoRoute extends StatelessWidget {
         menuButtonText1: 'SELECCIONAR ARCHIVO',
         menuButtonIcon1: 'assets/file.png',
         onPressed1: () {
-          // Acción para el botón "SELECCIONAR ARCHIVO" (personalícela según sus necesidades)
         },
         menuButtonText2: 'SOLICITAR DIAGNÓSTICO',
         menuButtonIcon2: 'assets/chulo.png',
         onPressed2: () {
-          // Navegar a la pantalla de diagnóstico
           Navigator.push(
             context,
             MaterialPageRoute(
@@ -27,7 +25,6 @@ class SeleccionMedicoRoute extends StatelessWidget {
         menuButtonText3: 'VOLVER',
         menuButtonIcon3: 'assets/salir.png',
         onPressed3: () {
-          // Volver siempre a menu.dart
           Navigator.of(context).popUntil((route) => route.isFirst);
         },
       ),
