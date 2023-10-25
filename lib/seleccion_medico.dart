@@ -1,16 +1,28 @@
 import 'package:flutter/material.dart';
 import 'menu.dart';
 import 'diagnostico.dart';
+import 'package:file_picker/file_picker.dart';
+
 
 class SeleccionMedicoRoute extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: BackgroundWidget(
-        title: 'NeuroSight', // Título
+        title: 'NeuroSight', 
         menuButtonText1: 'SELECCIONAR ARCHIVO',
         menuButtonIcon1: 'assets/file.png',
-        onPressed1: () {
+        onPressed1: () async {
+          FilePickerResult? result = await FilePicker.platform.pickFiles(
+            type: FileType.custom,
+            allowedExtensions: ['png'],
+          );
+          if (result != null) {
+            
+            print(result.files.single.path);
+          } else {
+            
+          }
         },
         menuButtonText2: 'SOLICITAR DIAGNÓSTICO',
         menuButtonIcon2: 'assets/chulo.png',
@@ -25,6 +37,7 @@ class SeleccionMedicoRoute extends StatelessWidget {
         menuButtonText3: 'VOLVER',
         menuButtonIcon3: 'assets/salir.png',
         onPressed3: () {
+          // Volver siempre a menu.dart
           Navigator.of(context).popUntil((route) => route.isFirst);
         },
       ),
