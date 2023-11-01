@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'seleccion_medico.dart';
+import 'carga.dart'; // Importa carga.dart
+import 'dart:math'; // Importa la biblioteca random
 
 class DiagnosticoRoute extends StatelessWidget {
   @override
@@ -7,10 +9,16 @@ class DiagnosticoRoute extends StatelessWidget {
     return Scaffold(
       body: BackgroundWidget(
         title: 'NeuroSight',
-        menuButtonText1: 'CONSULTAR DIAGNÓSTICO',
+        menuButtonText1: 'SOLICITAR DIAGNÓSTICO',
         menuButtonIcon1: 'assets/chulo.png',
         onPressed1: () {
-          // Agrega la acción que desees para el botón actual
+          // Redirige a la pantalla de carga
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => CargaRoute(),
+            ),
+          );
         },
         menuButtonText2: 'VOLVER',
         menuButtonIcon2: 'assets/salir.png',

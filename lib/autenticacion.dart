@@ -13,12 +13,37 @@ class AutenticacionRoute extends StatelessWidget {
         userController: _userController,
         passwordController: _passwordController,
         onPressed1: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) => SeleccionMedicoRoute(),
-            ),
-          );
+          String user = _userController.text;
+          String password = _passwordController.text;
+
+          // Verifica si el usuario y la contraseña son correctos
+          if (user == 'putinmanda' && password == '1234') {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => SeleccionMedicoRoute(),
+              ),
+            );
+          } else {
+            // Muestra una advertencia al usuario
+            showDialog(
+              context: context,
+              builder: (context) {
+                return AlertDialog(
+                  title: Text('Advertencia'),
+                  content: Text('Usuario o contraseña incorrectos. Por favor, inténtalo de nuevo.'),
+                  actions: [
+                    TextButton(
+                      onPressed: () {
+                        Navigator.of(context).pop();
+                      },
+                      child: Text('Aceptar'),
+                    ),
+                  ],
+                );
+              },
+            );
+          }
         },
         onPressed2: () {
           Navigator.pop(context);

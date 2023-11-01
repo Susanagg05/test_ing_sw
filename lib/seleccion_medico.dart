@@ -3,36 +3,68 @@ import 'menu.dart';
 import 'diagnostico.dart';
 import 'package:file_picker/file_picker.dart';
 
+class SeleccionMedicoRoute extends StatefulWidget {
+  @override
+  _SeleccionMedicoRouteState createState() => _SeleccionMedicoRouteState();
+}
 
-class SeleccionMedicoRoute extends StatelessWidget {
+class _SeleccionMedicoRouteState extends State<SeleccionMedicoRoute> {
+  bool isFileSelected = false;
+  PlatformFile? selectedFile;
+
+  void selectFile() async {
+    FilePickerResult? result = await FilePicker.platform.pickFiles(
+      type: FileType.custom,
+      allowedExtensions: ['png'],
+    );
+    if (result != null && result.files.isNotEmpty) {
+      setState(() {
+        selectedFile = result.files.first;
+        isFileSelected = true;
+      });
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: BackgroundWidget(
-        title: 'NeuroSight', 
+        title: 'NeuroSight',
         menuButtonText1: 'SELECCIONAR ARCHIVO',
         menuButtonIcon1: 'assets/file.png',
-        onPressed1: () async {
-          FilePickerResult? result = await FilePicker.platform.pickFiles(
-            type: FileType.custom,
-            allowedExtensions: ['png'],
-          );
-          if (result != null) {
-            
-            print(result.files.single.path);
-          } else {
-            
-          }
-        },
+        onPressed1: selectFile,
         menuButtonText2: 'SOLICITAR DIAGNÓSTICO',
-        menuButtonIcon2: 'assets/chulo.png',
+        menuButtonIcon2: isFileSelected
+            ? 'assets/bola_verde.png'
+            : 'assets/bola_roja.png',
         onPressed2: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) => DiagnosticoRoute(),
-            ),
-          );
+          if (isFileSelected) {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => DiagnosticoRoute(),
+              ),
+            );
+          } else {
+            // Muestra una advertencia al usuario
+            showDialog(
+              context: context,
+              builder: (context) {
+                return AlertDialog(
+                  title: Text('Advertencia'),
+                  content: Text('Debes seleccionar un archivo antes de solicitar un diagnóstico.'),
+                  actions: [
+                    TextButton(
+                      onPressed: () {
+                        Navigator.of(context).pop();
+                      },
+                      child: Text('Aceptar'),
+                    ),
+                  ],
+                );
+              },
+            );
+          }
         },
         menuButtonText3: 'VOLVER',
         menuButtonIcon3: 'assets/salir.png',

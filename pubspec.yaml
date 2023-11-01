@@ -27,3 +27,8 @@ flutter:
     - "assets/chulo.png"
     - "assets/salir.png"
     - "assets/file.png"
+    - "assets/Cancer.png"
+    - "assets/NotCancer.png"
+    - "assets/carga.gif"
+    - "assets/bola_verde.png"
+    - "assets/bola_roja.png"
