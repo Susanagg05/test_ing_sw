@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'seleccion_medico.dart';
-import 'tumor_malo.dart'; // Importa TumorMaloRoute
-import 'tumor_bueno.dart'; // Importa TumorBuenoRoute
-import 'dart:math'; // Importa la biblioteca random
+import 'tumor_malo.dart'; 
+import 'tumor_bueno.dart'; 
+import 'dart:math'; 
 
 class CargaRoute extends StatefulWidget {
   @override
@@ -13,14 +13,11 @@ class _CargaRouteState extends State<CargaRoute> {
   @override
   void initState() {
     super.initState();
-    // Simula una carga de 5 segundos y luego redirige aleatoriamente
     Future.delayed(Duration(seconds: 5), () {
-      // Genera un número aleatorio (0 o 1)
       final random = Random();
       final randomNumber = random.nextInt(2);
 
       if (randomNumber == 0) {
-        // Redirige a TumorMaloRoute
         Navigator.pushReplacement(
           context,
           MaterialPageRoute(
@@ -28,7 +25,6 @@ class _CargaRouteState extends State<CargaRoute> {
           ),
         );
       } else {
-        // Redirige a TumorBuenoRoute
         Navigator.pushReplacement(
           context,
           MaterialPageRoute(
@@ -44,16 +40,15 @@ class _CargaRouteState extends State<CargaRoute> {
     return Scaffold(
       body: BackgroundWidget(
         title: 'NeuroSight',
-        // Muestra el indicador de carga y el gif
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Padding(
               padding: const EdgeInsets.all(16.0),
               child: Image.asset(
-                'assets/carga.gif', // Reemplaza 'tu_gif.gif' con el nombre de tu GIF
-                width: 200, // Tamaño máximo para el ancho del GIF
-                height: 200, // Tamaño máximo para el alto del GIF
+                'assets/carga.gif', 
+                width: 200, 
+                height: 200, 
               ),
             ),
             SizedBox(height: 20), // Espaciado
@@ -130,7 +125,6 @@ class BackgroundWidget extends StatelessWidget {
                 Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
-                    // Agrega la columna de carga aquí
                     child,
                   ],
                 ),
